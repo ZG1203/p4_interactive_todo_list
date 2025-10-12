@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To to list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container w-100 text-center">
+        <h1>My To Do list</h1>
+    </div>
+    <!-- add new tasks section -->
+    <div class="container w-100">
+        <div class="add-task-section">
+            <h4 class="mt-1 mb-0 p-3 bg-primary rounded-top-4">Add a New Task</h4>
+            <form class="bg-white p-3 border rounded-bottom-4">
+                <div class="row">
+                    <div class="col-md-3 mt-2">
+                        <label for="dueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate">
+                    </div>
+                    <div class="col-md-9 mt-2">
+                        <label for="taskDetails" class="form-label">Task Details</label>
+                        <input type="text" class="form-control w-100" id="taskDetails" placeholder="Enter task description">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-add btn-primary" id="addButton">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--view, edit and delete task section  -->
+    <div class="container w-100 mt-3">
+        <div class="mt-1 mb-0 p-3 bg-primary rounded-top-4">
+            <h4>To Do List Overview</h4>
+        </div>
+        <div class="card rounded-top-0 rounded-bottom-4">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="10%">ID</th>
+                                <th scope="col" width="15%">Date</th>
+                                <th scope="col" width="45%">Details</th>
+                                <th scope="col" width="10%">Complete</th>
+                                <th scope="col" width="10%">Delete</th>
+                                <th scope="col" width="10%">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>11/10/2025</td>
+                                <td>Draft project plan</td>
+                                <td>
+                                    <button class="btn  btn-status btn-sm btn-danger rounded-circle w-50" id="statusButton">No</button>
+                                </td>
+                                <td>
+                                    <div class="button-container">
+                                        <button class="btn btn-edit btn-sm btn-primary w-100" id="deleteButton">Delete</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button-container">
+                                        <button class="btn btn-delete btn-sm btn-primary w-100" id="editButton">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>12/10/2025</td>
+                                <td>Create page html</td>
+                                <td>
+                                    <div class="button-container">
+                                        <button class="btn  btn-status btn-sm btn-success rounded-circle w-50" id="statusButton">Yes</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button-container">
+                                        <button class="btn btn-edit btn-sm btn-primary w-100" id="deleteButton">Delete</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button-container">
+                                        <button class="btn btn-delete btn-sm btn-primary w-100" id="editButton">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div>   
+    </div>
+
+</body>
+<script src="./assets/script.js"></script>
+
+</html>
