@@ -20,11 +20,11 @@
                 <div class="row">
                     <div class="col-md-3 mt-2">
                         <label for="dueDate" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="dueDate">
+                        <input type="date" class="form-control" id="dueDate" required>
                     </div>
                     <div class="col-md-9 mt-2">
-                        <label for="taskDetails" class="form-label">Task Details</label>
-                        <input type="text" class="form-control w-100" id="taskDetails" placeholder="Enter task description">
+                        <label for="inputTaskDetail" class="form-label">Task Details</label>
+                        <input type="text" class="form-control w-100" id="inputTaskDetail" placeholder="Enter task description" required>
                     </div>
                 </div>
                 <div class="mt-2">
@@ -52,42 +52,42 @@
                                 <th scope="col" width="10%">Edit</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="to-do-list">
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row" class="task-ID">1</th>
                                 <td>11/10/2025</td>
-                                <td>Draft project plan</td>
+                                <td class="task-detail">Draft project plan</td>
                                 <td>
-                                    <button class="btn  btn-status btn-sm btn-danger rounded-circle w-50" id="statusButton">No</button>
+                                    <button class="btn  btn-status btn-sm btn-danger rounded-circle w-75" onclick="changeStatus(this)">No</button>
                                 </td>
                                 <td>
                                     <div class="button-container">
-                                        <button class="btn btn-edit btn-sm btn-primary w-100" id="deleteButton">Delete</button>
+                                        <button class="btn btn-edit btn-sm btn-primary w-100 deleteButton">Delete</button>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="button-container">
-                                        <button class="btn btn-delete btn-sm btn-primary w-100" id="editButton">Edit</button>
+                                        <button class="btn btn-delete btn-sm btn-primary w-100 editButton">Edit</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
+                                <th scope="row" class="task-ID">2</th>
                                 <td>12/10/2025</td>
-                                <td>Create page html</td>
+                                <td class="task-detail">Create page html</td>
                                 <td>
                                     <div class="button-container">
-                                        <button class="btn  btn-status btn-sm btn-success rounded-circle w-50" id="statusButton">Yes</button>
+                                        <button class="btn  btn-status btn-sm btn-success rounded-circle w-75 status-button" onclick="changeStatus(this)">Yes</button>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="button-container">
-                                        <button class="btn btn-edit btn-sm btn-primary w-100" id="deleteButton">Delete</button>
+                                        <button class="btn btn-edit btn-sm btn-primary w-100 deleteButton">Delete</button>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="button-container">
-                                        <button class="btn btn-delete btn-sm btn-primary w-100" id="editButton">Edit</button>
+                                        <button class="btn btn-delete btn-sm btn-primary w-100 editButton">Edit</button>
                                     </div>
                                 </td>
                             </tr>
