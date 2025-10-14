@@ -73,12 +73,12 @@ function addRecord () {
         </td>
         <td>
             <div class="button-container">
-                <button class="btn btn-edit btn-sm btn-primary w-100 deleteButton">Delete</button>
+                <button class="btn btn-edit btn-sm btn-primary w-100 deleteButton" onclick="deleteRecord(this)">Delete</button>
             </div>
         </td>
         <td>
             <div class="button-container">
-                <button class="btn btn-delete btn-sm btn-primary w-100 editButton">Edit</button>
+                <button class="btn btn-delete btn-sm btn-primary w-100 editButton" onclick="editRecord(this)">Edit</button>
             </div>
         </td>
     `;
@@ -109,8 +109,70 @@ function changeStatus(button) {
     }
 }
 
-// 3. delete button
-// when click delete button, delete the record from list
+// 3. delete button - when click delete button, delete the record from list
+function deleteRecord(button) {
+    const buttonElement = button.parentElement; 
+    const tableElement = buttonElement.parentElement;
+    const recordRow = tableElement.parentElement;
+    recordRow.remove();
+}
+// 4. edit button - when click edit button, allow user to update due date and details 
+function editRecord(button) {
+    const buttonElement = button.parentElement; 
+    const tableElement = buttonElement.parentElement;
+    const recordRow = tableElement.parentElement;
+    editDueDate(recordRow);
+    editTaskDetail(recordRow);
+}
 
-// 4. edit button
-// when click edit button, allow user to update due date and/or details 
+ // edit due date, check if new date is valid or same as original value.
+function editDueDate(recordRow) {
+    const dueDate = recordRow.cells[1];
+    const newDueDate = prompt ( 'Edit due date: format DD/MM/YYYY:', dueDate.textContent);
+    if (newDueDate !== null && newDueDate.trim() !=='') {
+        if (newDueDate == dueDate.textContent) {
+            alert ('Due date is not changed')
+        } else if (validateNewDate(newDueDate.trim())) {
+            dueDate.textContent = newDueDate.trim();
+            alert('Due date is updated');
+        } else {
+            alert ('Please enter a valid date in DD/MM/YYYY format');
+            editDueDate(recordRow);
+        }
+    } else {
+        alert ('No new due date is filled; due date is not changed');
+    }
+}
+
+// check if new date is in valid format
+function validateNewDate(dateString) {
+    const regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+    if (!regex.test(dateString)) return false;
+    
+    const parts = dateString.split('/');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10);
+    const year = parseInt(parts[2], 10);
+    
+    if (month < 1 || month > 12) return false;
+    if (day < 1 || day > 31) return false;
+    
+    const date = new Date(year, month - 1, day);
+    return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+}
+
+// edit task detail, check if new task detail is same as original value. 
+function editTaskDetail(recordRow) {
+    const taskDetail = recordRow.cells[2];
+    const newTaskDetail = prompt ( 'Edit task detail:', taskDetail.textContent);
+    if (newTaskDetail !== null && newTaskDetail.trim() !=='' ) {
+        if (newTaskDetail == taskDetail.textContent) {
+            alert('Task detail is not changed')
+        } else {
+            taskDetail.textContent = newTaskDetail.trim();
+            alert('Task detail is updated')
+        }
+    } else {
+        alert ('No new task detail is filled; task detail is not changed')
+    }
+}
